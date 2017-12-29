@@ -10,7 +10,9 @@ var images = ["https://i.ytimg.com/vi/dGFSjKuJfrI/maxresdefault.jpg",
 "https://boygeniusreport.files.wordpress.com/2015/06/funny-cat.jpg?quality=98&strip=all&w=782"];
 
  for (var i = 0; i < images.length; i++) {
+ 	var div = document.createElement("DIV");
  	var image = document.createElement("IMG");
+ 	div.appendChild(image);
 	image.setAttribute("src", images[i]);
-	document.body.appendChild(image);
+	document.body.appendChild(div);
  }
