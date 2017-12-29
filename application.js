@@ -14,5 +14,8 @@ var images = ["https://i.ytimg.com/vi/dGFSjKuJfrI/maxresdefault.jpg",
  	var image = new Image();
  	div.appendChild(image);
 	image.src = image_src;
+	if(image.width > 800){
+		image.width = 800;	
+	}
 	document.body.appendChild(div);
  });
