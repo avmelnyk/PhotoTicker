@@ -11,8 +11,8 @@ var images = ["https://i.ytimg.com/vi/dGFSjKuJfrI/maxresdefault.jpg",
 
  images.forEach(function(image_src){
  	var div = document.createElement("DIV");
- 	var image = document.createElement("IMG");
+ 	var image = new Image();
  	div.appendChild(image);
-	image.setAttribute("src", image_src);
+	image.src = image_src;
 	document.body.appendChild(div);
  });
