@@ -11,15 +11,9 @@ var images = ["https://i.ytimg.com/vi/dGFSjKuJfrI/maxresdefault.jpg",
 
  images.forEach(function(image_src){
  	var div = document.createElement("DIV");
+ 	div.className = "image_container";
  	var image = new Image();
  	div.appendChild(image);
 	image.src = image_src;
-	image.onload = function(){
-		if(image.width > 800){
-			image.width = 800;	
-		}
-	}
-
-	
 	document.body.appendChild(div);
  });
