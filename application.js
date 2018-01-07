@@ -1,16 +1,21 @@
 var PhotoTicker= (function () {
   return {
-  	getImages: function() {
+  	getImages: function( callback) {
   			var xhr = new XMLHttpRequest();
-  			xhr.open('GET','data.json', false);
-        xhr.setRequestHeader("Content-Type", "application/json");
+  			var images = new Array();
+  			xhr.open('GET','/data.json', true);
+        	xhr.setRequestHeader("Content-Type", "application/json");
   			xhr.send();
-  			if (xhr.status != 200) { 
-  				alert( xhr.status + ': ' + 'Alarm'); 
-			  } else {
-          var images = JSON.parse(xhr.responseText);
-          return images;
-			  }
+  			xhr.onreadystatechange = function() { // (3)
+				  if (xhr.readyState != 4) return;
+				  if (xhr.status != 200) {
+				    alert(xhr.status + ': ' + xhr.statusText);
+				  } else {
+				    images = JSON.parse(xhr.responseText);
+		          	return callback(images);
+				  }
+
+			}
   	},
 
     showImages: function (images) {
@@ -26,5 +31,4 @@ var PhotoTicker= (function () {
   };
 })();
 
-var images = PhotoTicker.getImages();
-PhotoTicker.showImages(images);
+var images = PhotoTicker.getImages(PhotoTicker.showImages);
