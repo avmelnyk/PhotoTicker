@@ -3,7 +3,7 @@ var PhotoTicker= (function () {
   	getImages: function( callback) {
   			var xhr = new XMLHttpRequest();
   			var images = new Array();
-  			xhr.open('GET','/data.json', true);
+  			xhr.open('GET','data.json', true);
         	xhr.setRequestHeader("Content-Type", "application/json");
   			xhr.send();
   			xhr.onreadystatechange = function() { // (3)
